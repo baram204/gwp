@@ -6,12 +6,16 @@ import (
 )
 
 func main() {
+
 	p("ChitChat", version(), "started at", config.Address)
 
-	// handle static assets
-	mux := http.NewServeMux()
-	files := http.FileServer(http.Dir(config.Static))
+	// 정적 파일 다루기
+	mux := http.NewServeMux() // 멀티 플렉서 1:n 매핑
+	files := http.FileServer(http.Dir(config.Static)) // config 구조체 Static 필드에 담긴 값을 복사해서
+	// 파일 서버가 그곳을 가리키게 한다. "Static"         : "public"
 	mux.Handle("/static/", http.StripPrefix("/static/", files))
+	// /static/ 들어오면, /static/ 제거한 경로를 파일서버에 넘겨준다.
+	// http://xxx.com/static/hello.css -> /public/hello.css
 
 	//
 	// all route patterns matched here

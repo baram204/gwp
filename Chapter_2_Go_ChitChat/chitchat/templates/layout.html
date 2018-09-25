@@ -1,3 +1,4 @@
+{{/* 템플릿에서 인식될 이름을 선언한다*/}}
 {{ define "layout" }}
 
 <!DOCTYPE html>
@@ -11,6 +12,7 @@
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
   </head>
   <body>
+  {{/* . 은 해당 템플릿에 정보를 넘겨준다는 말이다.*/}}
     {{ template "navbar" . }}
 
     <div class="container">
@@ -23,5 +25,5 @@
     <script src="/static/js/bootstrap.min.js"></script>
   </body>
 </html>
-
+{{/* end 키워드로 종료! */}}
 {{ end }}

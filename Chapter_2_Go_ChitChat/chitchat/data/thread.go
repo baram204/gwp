@@ -4,6 +4,7 @@ import (
 	"time"
 )
 
+// data.Thread 로 접근
 type Thread struct {
 	Id        int
 	Uuid      string
@@ -89,18 +90,24 @@ func (user *User) CreatePost(conv Thread, body string) (post Post, err error) {
 }
 
 // Get all threads in the database and returns it
+// 모든 쓰레드를 데이터베이스에서 가져와서 반환한다.
 func Threads() (threads []Thread, err error) {
 	rows, err := Db.Query("SELECT id, uuid, topic, user_id, created_at FROM threads ORDER BY created_at DESC")
 	if err != nil {
 		return
 	}
+	// Next() 로 포인터를 이동하면서 값들을 꺼내어 담는다.
 	for rows.Next() {
+		// 게시글(쓰레드) 하나를 짧은 변수 선언으로 선언.
 		conv := Thread{}
+		// 담기
 		if err = rows.Scan(&conv.Id, &conv.Uuid, &conv.Topic, &conv.UserId, &conv.CreatedAt); err != nil {
 			return
 		}
+		// 누적
 		threads = append(threads, conv)
 	}
+	// 다 담았으면 DB 와의 연결은 닫기
 	rows.Close()
 	return
 }

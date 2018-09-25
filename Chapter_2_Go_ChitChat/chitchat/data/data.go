@@ -9,10 +9,13 @@ import (
 	"log"
 )
 
+// 리시버를 통해서 일반 타입이 아닌 sql.DB 에 담긴 구조체로 향하는 포인터를 수신하도록 함
 var Db *sql.DB
 
+// 패키지 초기화 메소드, main() 의 init() 보다 먼저 실행됨
 func init() {
 	var err error
+	//  Db 에는 당근 sql.DB 구조체가 할당됩니다.
 	Db, err = sql.Open("postgres", "dbname=chitchat sslmode=disable")
 	if err != nil {
 		log.Fatal(err)

@@ -13,6 +13,7 @@
   <div class="panel-body">
     <span class="lead"> <i class="fa fa-comment"></i> {{ .Body }}</span>
     <div class="pull-right">
+        {{/*Thread 리시버를 가지는 User 함수로 User 리턴받고, User의 Name 필드 값을 보여준다 */}}
       {{ .User.Name }} - {{ .CreatedAtDate }}
     </div>    
   </div>
