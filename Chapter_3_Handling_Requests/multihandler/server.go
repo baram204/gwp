@@ -23,8 +23,10 @@ func main() {
 
 	server := http.Server{
 		Addr: "127.0.0.1:8080",
+		// 핸들러를 명시하지 않고
 	}
 
+	// 직접 여러 핸들러를 추가할 수 있다.
 	http.Handle("/hello", &hello)
 	http.Handle("/world", &world)
 
