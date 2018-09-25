@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github.com/sausheong/gwp/Chapter_2_Go_ChitChat/chitchat/data"
+	// 로컬 패키지 임포트
+	"./data"
 	"net/http"
 )
 
