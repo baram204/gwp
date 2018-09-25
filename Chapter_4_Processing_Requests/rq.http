@@ -1,0 +1,30 @@
+### 한칸을 띄우면 거기서부터 본문
+
+POST 127.0.0.1:8080/body HTTP/1.1
+
+Content-Type: application/json
+
+{
+"key" : "value",
+"list": [1, 2, 3]
+}
+
+### 한칸을 띄우면 붙이면 헤더로 해석된다.
+
+POST 127.0.0.1:8080/body HTTP/1.1
+Content-Type: application/json
+
+{
+"key" : "value",
+"list": [1, 2, 3]
+}
+
+### json 뿐 아니라 평문으로도 보낼 수 있다.
+
+POST 127.0.0.1:8080/body HTTP/1.1
+Content-Type: text/plain; charset=utf-8
+
+first_name=hello&last_name=moon
+
+###
+
