@@ -5,8 +5,16 @@
   </head>
   <body>
     <div>{{ . }}</div>
+
+    {{/* 주변 맥락에 따라서 이스케이프 자동 처리된다.*/}}
+
+    <p>href="/I%20asked:%20%3ci%3e%22What%27s%20up?%22%3c/i%3e"</p>
     <div><a href="/{{ . }}">Path</a></div>
+
+    <p>href="/?q=I%20asked%3a%20%3ci%3e%22What%27s%20up%3f%22%3c%2fi%3e"</p>
     <div><a href="/?q={{ . }}">Query</a></div>
+    <p>onclick="f('I asked: \x3ci\x3e\x22What\x27s up?\x22\x3c\/i\x3e')"</p>
     <div><a onclick="f('{{ . }}')">Onclick</a></div>
+
   </body>
 </html>

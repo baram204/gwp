@@ -6,7 +6,9 @@ import (
 )
 
 func process(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("tmpl.html")
+	//t, _ := template.ParseFiles("tmpl.html")
+	// handing errors with Must function
+	t := template.Must(template.ParseFiles("tmpl.html"))
 	t.Execute(w, "Hello World!")
 }
 

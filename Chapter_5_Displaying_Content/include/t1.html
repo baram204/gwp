@@ -9,7 +9,7 @@
     <div> This is t1.html before</div>
     <div>This is the value of the dot in t1.html - [{{ . }}]</div>
     <hr/>
-    {{ template "t2.html" }}
+    {{ template "t2.html"  . }}
     <hr/>
     <div> This is t1.html after</div>
   </body>

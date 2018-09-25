@@ -7,7 +7,9 @@ import (
 
 func process(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("tmpl.html")
+	// 슬라이스 만들고
 	daysOfWeek := []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
+	// 액션으로 전달
 	t.Execute(w, daysOfWeek)
 }
 

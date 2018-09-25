@@ -4,6 +4,9 @@
     <title>Go Web Programming</title>
   </head>
   <body>
+  {{/*다음처럼 맵으로 등록된 함수를 파이프라인 형태로 사용할 수 있다*/}}
     <div>The date/time is {{ . | fdate }}</div>
+  {{/* 함수형태도 있는데 파이프라인이 더 강력하다 */}}
+  <div>The date/time is {{ fdate . }}</div>
   </body>
 </html>

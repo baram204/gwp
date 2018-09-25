@@ -7,6 +7,12 @@
   </head>
   <body>
     {{ template "content" }}
+
+    {{/* 블록을 사용하면 템플릿이 넘어오지 않았을 때 표시될 내용을 정의해둘 수 있다.*/}}
+
+    {{/*{{ block "content" .}}*/}}
+        {{/*<h1 style="color: blue;">Hello World!</h1>*/}}
+    {{/*{{end}}*/}}
   </body>
 </html>
 

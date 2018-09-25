@@ -14,6 +14,9 @@ func process(w http.ResponseWriter, r *http.Request) {
 		t, _ = template.ParseFiles("layout.html", "red_hello.html")
 	} else {
 		t, _ = template.ParseFiles("layout.html", "blue_hello.html")
+		// 해당 템플릿이 없을 경우 보여질 블록 템플릿을 정의할 수 있다.
+		//t, _ = template.ParseFiles("layout.html")
+
 	}
 	t.ExecuteTemplate(w, "layout", "")
 }
