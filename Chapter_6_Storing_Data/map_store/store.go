@@ -10,16 +10,19 @@ type Post struct {
 	Author  string
 }
 
+// Post 의 포인터를 매핑하는 이유는, 가져올 때마다 복사하지 않기 위함
 var PostById map[int]*Post
 var PostsByAuthor map[string][]*Post
 
 func store(post Post) {
 	PostById[post.Id] = &post
+	// 저자가 같으면 슬라이스 내부에 쌓인다. append 로 누적시키는 형태 생소하다 진짜...
 	PostsByAuthor[post.Author] = append(PostsByAuthor[post.Author], &post)
 }
 
 func main() {
 
+	// map 은 사용하기 전에 반드시 make 해줘야 한다.
 	PostById = make(map[int]*Post)
 	PostsByAuthor = make(map[string][]*Post)
 

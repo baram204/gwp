@@ -3,7 +3,9 @@ package main
 import (
 	"database/sql"
 	"fmt"
+	//	임포트 후 바로 사용하지 않고, init() 시점에 사용을 해야할 경우 일단 언더바로 오류를 스킵
 	_ "github.com/lib/pq"
+
 )
 
 type Post struct {
@@ -17,6 +19,10 @@ var Db *sql.DB
 // connect to the Db
 func init() {
 	var err error
+	// 패키지-> 매인 순으로 init() 이 실행되는데 여튼, 처음 컴파일 때는 사용이 안 되고, 패키지를 읽거나 하는 나중 시점에
+	// 사용이 되므로 ... 언더바로 임포트 처리
+
+	// DB 접속
 	Db, err = sql.Open("postgres", "user=gwp dbname=gwp password=gwp sslmode=disable")
 	if err != nil {
 		panic(err)
@@ -56,6 +62,7 @@ func (post *Post) Create() (err error) {
 		return
 	}
 	defer stmt.Close()
+	// 게시글 DB 저장 후 ID 를 가져와서 구조체에 넣는다.
 	err = stmt.QueryRow(post.Content, post.Author).Scan(&post.Id)
 	return
 }

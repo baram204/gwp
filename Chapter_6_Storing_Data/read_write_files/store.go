@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	// 바이트로 배열로 문자열을 변환
 	data := []byte("Hello World!\n")
 
 	// write to file and read from file using WriteFile and ReadFile
@@ -27,6 +28,7 @@ func main() {
 	file2, _ := os.Open("data2")
 	defer file2.Close()
 
+	// 읽어오기 전에 크기를 딱맞게 만듬
 	read2 := make([]byte, len(data))
 	bytes, _ = file2.Read(read2)
 	fmt.Printf("Read %d bytes from file\n", bytes)

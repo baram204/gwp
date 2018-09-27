@@ -1,0 +1,31 @@
+# For a quick start check out our HTTP Requests collection (Tools|HTTP Client|Open HTTP Requests Collection).
+#
+# Following HTTP Request Live Templates are available:
+# * 'gtrp' and 'gtr' create a GET request with or without query parameters;
+# * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
+# * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+### 게시글 생성
+
+POST http://localhost:8080/post/
+Content-Type: application/json
+
+{"content":"My first post","author":"Sau Sheong"}
+
+### 특정 게시글 조회
+
+GET http://localhost:8080/post/1
+Content-Type: application/json
+
+### 특정 게시글 갱신
+
+PUT http://localhost:8080/post/1
+Content-Type: application/json
+
+{"content":"수정된 제목","author":"Sau Sheong"}
+
+### 특정 게시글 삭제
+
+DELETE http://localhost:8080/post/1
+
+###

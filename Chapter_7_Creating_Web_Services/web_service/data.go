@@ -2,9 +2,11 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	_ "github.com/lib/pq"
 )
 
+// 포인터 리시버 타입 이유는 내부를 변경하기 위해서다. 할당된 구조체 내부에 접속해서 값을 변경하려고 포인터 리시버.
 var Db *sql.DB
 
 // connect to the Db
@@ -19,6 +21,7 @@ func init() {
 // Get a single post
 func retrieve(id int) (post Post, err error) {
 	post = Post{}
+	// 포인터를 주어서 구조체 내부 필드를 변경하도록 한다
 	err = Db.QueryRow("select id, content, author from posts where id = $1", id).Scan(&post.Id, &post.Content, &post.Author)
 	return
 }
@@ -28,6 +31,7 @@ func (post *Post) create() (err error) {
 	statement := "insert into posts (content, author) values ($1, $2) returning id"
 	stmt, err := Db.Prepare(statement)
 	if err != nil {
+		fmt.Print(err)
 		return
 	}
 	defer stmt.Close()
