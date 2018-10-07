@@ -22,7 +22,7 @@ func catcher(c chan int) {
 }
 
 func main() {
-	// 버버 3개의 채널을 만든다.
+	// 버퍼 3개의 채널을 만든다.
 	c := make(chan int, 3)
 	go thrower(c)
 	go catcher(c)

@@ -11,6 +11,8 @@ func printNumbers1(w chan bool) {
 	for i := 0; i < 10; i++ {
 		fmt.Printf("%d ", i)
 	}
+	// 출력을 위해 대기(락) 걸린 w1 채널에 값을 넣어주면 락이 풀리며 프로그램이 종료된다.
+	w<- true
 }
 
 // 문자열을 출력한다.

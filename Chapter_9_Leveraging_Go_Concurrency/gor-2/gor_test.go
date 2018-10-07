@@ -1,38 +1,18 @@
 package main
 
-// 숫자를 출력한다
-func printNumbers1() {
-	for i := 0; i < 10; i++ {
-		//fmt.Printf("%d ", i)
-	}
+import (
+	"testing"
+	"time"
+)
+
+func TestPrint1(t *testing.T){
+	print1() // TestPrint1() 쓰레드와 동기화된 숫자/문자 출력 만복문을 실행
 }
 
-// 문자열을 출력한다.
-func printLetters1() {
-	// A(0), B(1), C(2) .... J(10)
-	for i := 'A'; i < 'A'+10; i++ {
-		//fmt.Printf("%c ", i)
-	}
-}
+func TestGoPrint1(t *testing.T){
+	goPrint1() // TestGoPrint1() 쓰레드와 비동기화된 각각의 고루틴화된 숫자/문자 출력 만복문을 실행
 
-func print1() {
-	printNumbers1()
-	printLetters1()
-}
-
-//
-func goPrint1() {
-	go printNumbers1()
-	go printLetters1()
-}
-
-func main() {
-	// 함수를 동기적으로 실행
-	print1()
-
-	// 함수를 비동기적으로 실행
-	goPrint1()
-
-	// 3초 대기
-	//time.Sleep(time.Second * 3)
+	// 고루틴이 완료되기 전에 현재 테스트가 종료되지 않도록 ,
+	// 현재 테스트 스콥을 지속지킨다.
+	time.Sleep(2 *time.Millisecond)
 }
