@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="das://2ced31a5-c1ba-46d8-aaea-386d5c5702b1/role/gwp" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Chapter_2_Go_ChitChat/chitchat/data/setup.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/Chapter_6_Storing_Data/sql_store1/setup.sql" dialect="PostgreSQL" />
   </component>

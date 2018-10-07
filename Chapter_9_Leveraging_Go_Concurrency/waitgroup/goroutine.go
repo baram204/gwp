@@ -22,8 +22,9 @@ func printLetters2(wg *sync.WaitGroup) {
 
 func main() {
 	var wg sync.WaitGroup
+	// 웨잇그룹 2 개
 	wg.Add(2)
-	go printNumbers2(&wg)
-	go printLetters2(&wg)
-	wg.Wait()
+	go printNumbers2(&wg) // done 해서 1차감
+	go printLetters2(&wg) // done 해서 1차감
+	wg.Wait()             // 일단 웨잇을 걸어 놓고 차감을 기다림
 }

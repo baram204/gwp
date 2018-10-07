@@ -1,7 +1,5 @@
 package main
 
-import "time"
-
 // 숫자를 출력한다
 func printNumbers1() {
 	for i := 0; i < 10; i++ {
@@ -17,20 +15,6 @@ func printLetters1() {
 	}
 }
 
-func printNumbers2() {
-	for i := 0; i < 10; i++ {
-		time.Sleep(1 * time.Microsecond)
-		//fmt.Printf("%d ", i)
-	}
-}
-
-func printLetters2() {
-	for i := 'A'; i < 'A'+10; i++ {
-		time.Sleep(1 * time.Microsecond)
-		//fmt.Printf("%c ", i)
-	}
-}
-
 func print1() {
 	printNumbers1()
 	printLetters1()
@@ -42,16 +26,13 @@ func goPrint1() {
 	go printLetters1()
 }
 
-func print2() {
-	printNumbers2()
-	printLetters2()
-}
-
-//
-func goPrint2() {
-	go printNumbers2()
-	go printLetters2()
-}
-
 func main() {
+	// 함수를 동기적으로 실행
+	print1()
+
+	// 함수를 비동기적으로 실행
+	goPrint1()
+
+	// 3초 대기
+	//time.Sleep(time.Second * 3)
 }
